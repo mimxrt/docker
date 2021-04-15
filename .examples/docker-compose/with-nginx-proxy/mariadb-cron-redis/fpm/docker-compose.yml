@@ -56,7 +56,11 @@ services:
       - redis
 
   proxy:
-    build: ./proxy
+    build:
+      context: ./proxy
+      args:
+        - FROM_BASE=nginxproxy
+        - NGINX_PROXY_TAG=1586
     restart: always
     ports:
       - 80:80
